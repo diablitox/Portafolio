@@ -2,7 +2,12 @@
   font-family: 'Jersey10';
   src: url('Jersey10-Regular-Dg7L8Xa3.ttf') format('truetype');
 }
-
+html, body{
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
 body {
   margin: 0;
   padding: 0;
@@ -13,6 +18,8 @@ body {
 }
 
 .container {
+  min-height: 100vh;
+  height: 100vh;   
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -62,7 +69,6 @@ section h2 {
   font-weight: bold;
   margin-bottom: 20px;
   text-align: center;
-  text-shadow: 0 0 8px #fcd34d;
   letter-spacing: 1.2px;
 }
 
@@ -220,14 +226,32 @@ footer {
   background-clip: text;
   display: inline-block;
 }
+.footer-secundario{
+  background-color: white;
+  text-align: center;
+  padding: 20px 0;
+}
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.footer-icons a {
+  color: black;    
+  font-size: 28px;   
+  transition: color 0.3s ease;
+}
+
 
 /* MEDIA QUERIES */
 @media (max-width: 1024px) {
   .container {
+    height: 100vh;
+    min-height: 100vh;
+    padding: 0 5%;
     flex-direction: column;
-    height: auto;
-    gap: 30px;
-    padding: 40px 5%;
+    gap: 20px;
   }
 
   #text {
@@ -265,7 +289,14 @@ footer {
   #habilidades img {
     width: 60px;
     height: 60px;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    user-select: none;
   }
+  #habilidades img:active {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 15px #fcd34d);
+}
 }
 
 @media (max-width: 600px) {

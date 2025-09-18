@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // QR Code
   new QRCode(document.getElementById("qrcode"), {
-    text: "https://acesse.one/IABLH",
+    text: "https://acesse.one/cvgarciar",
     width: 120,
     height: 120,
     colorDark: "#f9a8d4",
@@ -101,4 +101,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   observer.observe(seccionSobreMi);
 
+  // Ajuste altura real en móviles (para evitar barra del navegador)
+  function ajustarAltura() {
+    const altoPantalla = window.innerHeight;
+    document.querySelector(".container").style.height = altoPantalla + "px";
+  }
+
+  window.addEventListener("load", ajustarAltura);
+  window.addEventListener("resize", ajustarAltura);
 });
