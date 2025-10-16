@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // QR Code
   new QRCode(document.getElementById("qrcode"), {
-    text: "https://l1nk.dev/cvgarciarafa",
+    text: "https://acortar.link/NWN8lk",
     width: 120,
     height: 120,
     colorDark: "#f9a8d4",
