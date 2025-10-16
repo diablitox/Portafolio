@@ -8,15 +8,17 @@
   <link rel="icon" type="image/png" href="favicon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
   <div class="container">
     <div id="text"></div>
     <img id="profile-pic" src="yo.png" alt="Rafael García Ávila" />
   </div>
 
-   <section id="sobre-mi" class="seccion">
+  <!-- Sección sobre mí -->
+  <section id="sobre-mi" class="seccion">
     <div class="contenido">
-      <h2 class="titulo-seccion"> Sobre mí</h2>
+      <h2 class="titulo-seccion">Sobre mí</h2>
       <p class="bio">
         Vi el mundo por primera vez un 20 de diciembre de 2001 en Córdoba, España. Hoy tengo 23 años, y la informática
         ha estado presente en mi vida desde que tengo memoria.
@@ -51,6 +53,7 @@
     </div>
   </section>
 
+  <!-- Habilidades -->
   <section id="habilidades">
     <h2>Habilidades Técnicas</h2>
     <div class="skills-container">
@@ -65,42 +68,74 @@
     </div>
   </section>
 
+  <!-- Contacto -->
   <section id="contacto" class="seccion">
     <div class="contenido">
       <h2 class="titulo-seccion">Contacto</h2>
-      <form id="formulario-contacto" action="https://formspree.io/f/movnjrbj" method="POST">
+      <form id="formulario-contacto">
         <input type="text" name="nombre" placeholder="Nombre" required>
-        <input type="email" name="_replyto" placeholder="Correo electrónico" required>
+        <input type="email" name="email" placeholder="Correo electrónico" required>
         <textarea name="mensaje" rows="4" placeholder="Mensaje" required></textarea>
-        <input type="hidden" name="_subject" value="Nuevo mensaje desde mi portafolio">
         <button type="submit">Enviar</button>
       </form>
       <div id="mensaje-exito" style="display: none;">¡Mensaje enviado con éxito! ✅</div>
     </div>
   </section>
 
-<footer>
-  <div id="footer-content">
-    <p>Descarga mi CV escaneando el código QR:</p>
-    <div id="qrcode"></div>
-  </div>
-  <p>© 2025 Rafael García Ávila. Todos los derechos reservados.</p>
-</footer>
-<footer class="footer-secundario">
-  <div class="footer-icons">
-    <!-- LinkedIn -->
-    <a href="https://www.linkedin.com/in/rafagarciacom" target="_blank" class="text-black hover:text-blue-600">
-      <i class="fab fa-linkedin"></i>
-    </a>
-    <!-- GitHub -->
-    <a href="https://github.com/diablitox" target="_blank" class="text-black hover:text-gray-800">
-      <i class="fab fa-github"></i>
-    </a>
-  </div>
-</footer>
+  <!-- Footer -->
+  <footer>
+    <div id="footer-content">
+      <p>Descarga mi CV escaneando el código QR:</p>
+      <div id="qrcode"></div>
+    </div>
+    <p>© 2025 Rafael García Ávila. Todos los derechos reservados.</p>
+  </footer>
 
+  <footer class="footer-secundario">
+    <div class="footer-icons">
+      <a href="https://www.linkedin.com/in/rafagarciacom" target="_blank" class="text-black hover:text-blue-600">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/diablitox" target="_blank" class="text-black hover:text-gray-800">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </footer>
+
+  <!-- Librerías -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <!-- Script principal -->
+  <script>
+    // Inicializa EmailJS
+    emailjs.init("JMbDM8Njg95qpBeCC");
+
+    // Manejar envío del formulario
+    document.getElementById("formulario-contacto").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      emailjs.sendForm("service_73ordbp", "template_l3oscwk", this)
+        .then(() => {
+          document.getElementById("mensaje-exito").style.display = "block";
+
+          // 🎉 Efecto de confeti
+          confetti({
+            particleCount: 150,
+            spread: 70,
+            origin: { y: 0.6 }
+          });
+
+          this.reset();
+        })
+        .catch(error => {
+          console.error("Error al enviar:", error);
+          alert("❌ No se pudo enviar el mensaje. Revisa la consola para más detalles.");
+        });
+    });
+  </script>
+
   <script src="script.js"></script>
 </body>
 </html>
